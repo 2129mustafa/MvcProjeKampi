@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Hakkımda Başlığı</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AboutId</td>
+            <td>Başlık</td>
+            <td><a class="btn btn-@(item.AboutStatus==true ? "primary" : "danger")" href="@Url.Action("Delete","About", new { id = item.AboutId })">@(item.AboutStatus == true ? "Pasif Yap" : "Aktif Yap")</a></td>
+        </tr>
+    }
+    <tr></tr>
+</table>
+
+@Html.Action("AboutPartial", "About")

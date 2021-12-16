@@ -13,7 +13,7 @@ namespace EntityLayer.Concrete
         public int AboutId { get; set; }
 
         [StringLength(1000)]
-        public string  AboutDetails1 { get; set; }
+        public string AboutDetails1 { get; set; }
 
         [StringLength(1000)]
         public string AboutDetails2 { get; set; }
@@ -23,5 +23,7 @@ namespace EntityLayer.Concrete
 
         [StringLength(100)]
         public string AboutImage2 { get; set; }
+
+        public bool AboutStatus { get; set; }
     }
 }

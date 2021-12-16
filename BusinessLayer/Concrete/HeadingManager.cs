@@ -18,9 +18,30 @@ namespace BusinessLayer.Concrete
             _headinDal = headinDal;
         }
 
+        public Heading GetById(int id)
+        {
+            return _headinDal.Get(x => x.HeadingId == id);
+        }
+
         public List<Heading> GetList()
         {
             return _headinDal.List();
+        }
+
+        public void HeadingAdd(Heading heading)
+        {
+            _headinDal.Insert(heading);
+        }
+
+        public void HeadingDelete(Heading heading)
+        {
+           
+            _headinDal.Update(heading);
+        }
+
+        public void HeadingUpdate(Heading heading)
+        {
+            _headinDal.Update(heading);
         }
     }
 }
