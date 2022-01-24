@@ -18,26 +18,29 @@ namespace MvcProjeKampi.Controllers
 
         MessageManager mm = new MessageManager(new EfMessageDal());
         MessageValidator messagevalidator = new MessageValidator();
-        [Authorize]
+        
         public ActionResult Inbox()
         {
-            var messagelist = mm.GetListInbox(Mail);
+            string mail = (string)Session["AdminUserName"];
+            var messagelist = mm.GetListInbox(mail);
+            //var messagelist = mm.GetListInbox(Mail);
             return View(messagelist);
         }
         
         public ActionResult Sendbox()
         {
-            var messagelist = mm.GetListSendbox(Mail);
+            string mail = (string)Session["AdminUserName"];
+            var messagelist = mm.GetListSendbox(mail);
             return View(messagelist);
         }
 
-        public ActionResult GetInBoxMessageStars(int id)
-        {
-            var values = mm.GetById(id);
-            values.Star = true;
-            mm.MessageUpdate(values);
-            return View(values);
-        }
+        //public ActionResult GetInBoxMessageStars(int id)
+        //{
+        //    var values = mm.GetById(id);
+        //    values.Star = true;
+        //    mm.MessageUpdate(values);
+        //    return View(values);
+        //}
 
         public ActionResult GetInBoxMessageDetails(int id)
         {
@@ -61,9 +64,11 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
+            string sendermail = (string)Session["AdminUserName"];
             ValidationResult results = messagevalidator.Validate(message);
             if (results.IsValid)
             {
+                message.SenderMail = sendermail;
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 mm.MessageAdd(message);
                 return RedirectToAction("SendBox");

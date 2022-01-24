@@ -60,6 +60,7 @@
     <Compile Include="Abstract\IImageFileDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IRoleDal.cs" />
     <Compile Include="Abstract\ISkillDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfImageFileDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
+    <Compile Include="EntityFramework\EfRoleDal.cs" />
     <Compile Include="EntityFramework\EfSkillDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202111240752409_mig1.cs" />
@@ -138,6 +140,18 @@
     <Compile Include="Migrations\202112140741243_mig_skillcıkar.designer.cs">
       <DependentUpon>202112140741243_mig_skillcıkar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112232115491_mig_role_add.cs" />
+    <Compile Include="Migrations\202112232115491_mig_role_add.designer.cs">
+      <DependentUpon>202112232115491_mig_role_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112232128288_mig_adminrol_add.cs" />
+    <Compile Include="Migrations\202112232128288_mig_adminrol_add.designer.cs">
+      <DependentUpon>202112232128288_mig_adminrol_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112232142467_mig_adminstatu_add.cs" />
+    <Compile Include="Migrations\202112232142467_mig_adminstatu_add.designer.cs">
+      <DependentUpon>202112232142467_mig_adminstatu_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +213,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112140741243_mig_skillcıkar.resx">
       <DependentUpon>202112140741243_mig_skillcıkar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112232115491_mig_role_add.resx">
+      <DependentUpon>202112232115491_mig_role_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112232128288_mig_adminrol_add.resx">
+      <DependentUpon>202112232128288_mig_adminrol_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112232142467_mig_adminstatu_add.resx">
+      <DependentUpon>202112232142467_mig_adminstatu_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

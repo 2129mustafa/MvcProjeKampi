@@ -77,22 +77,22 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check1">
-                                                <label for="check1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="mailbox-star"><a href="/Message/GetInBoxMessageStars/@item.MessageId"><i class="fas fa-star text-@(item.Star == true ? "warning" : "dark")"></i></a></td>
-                                        <td class="mailbox-name"><a href="/Message/GetInBoxMessageDetails/@item.MessageId">@item.SenderMail</a></td>
-                                        <td class="mailbox-subject">
-                                            @Html.Raw(item.MessageRead == true ? "" + @item.Subject + "" : "<b>" + @item.Subject + "</b>") -@item.MessageContent.Substring(0, 30)...
-                                        </td>
+                                        <tr>
+                                            <td>
+                                                <div class="icheck-primary">
+                                                    <input type="checkbox" value="" id="check1">
+                                                    <label for="check1"></label>
+                                                </div>
+                                            </td>
+                                            <td class="mailbox-star"><a href="/Message/GetInBoxMessageStars/@item.MessageId"><i class="fas fa-star text-@(item.Star == true ? "warning" : "dark")"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetInBoxMessageDetails/@item.MessageId">@item.SenderMail</a></td>
+                                            <td class="mailbox-subject"> 
+                                                @Html.Raw(item.MessageRead == true ? "" + @item.Subject + "" : "<b>" + @item.Subject + "</b>") -@item.MessageContent.Substring(0, 10)...
+                                            </td>
 
-                                        <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
-                                    </tr>
+                                            <td class="mailbox-attachment"></td>
+                                            <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
+                                        </tr>
                                     }
 
                                 </tbody>

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
+   
     public class ContactController : BaseController
     {
         // GET: Contact

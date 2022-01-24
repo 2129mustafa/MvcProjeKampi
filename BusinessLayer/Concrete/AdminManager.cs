@@ -24,11 +24,11 @@ namespace BusinessLayer.Concrete
         public void AdminAdd(Admin admin)
         {
             string pass = admin.AdminPassword;
-            string email = admin.AdminUserName;
+            //string email = admin.AdminUserName;
             string key = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(pass)));
-            string mail = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(email)));
+           // string mail = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(email)));
             admin.AdminPassword = key;
-            admin.AdminUserName = mail;
+            //admin.AdminUserName = mail;
             _adminDal.Insert(admin);
         }
 

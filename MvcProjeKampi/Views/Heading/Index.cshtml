@@ -1,5 +1,7 @@
-﻿@using EntityLayer.Concrete
-@model List<Heading>
+﻿@using EntityLayer.Concrete 
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Heading>
 
 @{
     ViewBag.Title = "Index";
@@ -137,22 +139,12 @@
     </section>
 </body>
 </html>
-<a href="/Heading/AddHeading" class="btn btn-outline-primary">Yeni Başlık Girişi</a>
-@*<table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Başlık</th>
-            <th>Kategori</th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.HeadingId</td>
-                <td>@item.HeadingName</td>
-                <td>@item.Category.CategoryName</td>
-            </tr>
-        }
-    </table>
-    <a href="/Heading/AddHeading" class="btn btn-outline-info">Yeni Başlık Girişi</a>*@
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new { p}),new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+});
+
+<a href="/Heading/AddHeading" class="btn btn-outline-primary">Yeni Başlık Girişi</a>
 

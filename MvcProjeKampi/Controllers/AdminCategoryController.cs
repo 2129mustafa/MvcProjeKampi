@@ -46,7 +46,28 @@ namespace MvcProjeKampi.Controllers
                 }
             }
             return View();
+            
         }
+
+        
+        public JsonResult kategoriEkle(Category p)
+        {
+            if((p.Description != null && p.Description !="") && (p.CategoryName != null && p.CategoryName != ""))
+            {
+                try
+                {
+                    cm.CategoryAdd(p);
+                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception e)
+                {
+                    // log.add(e.message())
+                }
+            }
+            
+            return Json(new { result=false},JsonRequestBehavior.AllowGet);
+        }
+        
 
         public ActionResult DeleteCategory(int id)
         {

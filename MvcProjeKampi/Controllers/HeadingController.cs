@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,9 +18,15 @@ namespace MvcProjeKampi.Controllers
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var headingvalues=hm.GetList();
+            var headingvalues = hm.GetList().ToPagedList(p, 10);
+            return View(headingvalues);
+        }
+
+        public ActionResult HeadingReport()
+        {
+            var headingvalues = hm.GetList();
             return View(headingvalues);
         }
 
@@ -52,6 +60,24 @@ namespace MvcProjeKampi.Controllers
             hm.HeadingAdd(heading);
             return RedirectToAction("Index");
         }
+
+        //public JsonResult baslikekle(Heading heading)
+        //{
+        //    if ((heading.HeadingName!=null && heading.HeadingName=="") && (heading.CategoryId != null ) && (heading.WriterId != null))
+        //    {
+        //        try
+        //        {
+        //            hm.HeadingAdd(heading);
+        //            return Json(new { result=true},JsonRequestBehavior.AllowGet)
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            //messge
+        //        }
+        //    }
+        //    return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+        //}
+
 
         [HttpGet]
         public ActionResult EditHeading(int id)

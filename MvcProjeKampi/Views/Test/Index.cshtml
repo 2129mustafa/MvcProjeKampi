@@ -13,3 +13,23 @@
 <h2>Yazılım Mühendisi</h2>
 <h2>Yazılım Mühendisi</h2>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<h2>Test3</h2>
+<button class="btn btn-danger" id="btn2">Kaydet</button>
+
+<script>
+    $('#btn2').click(function () {
+        swal({
+            title: "Tebrikler.",
+            text: "Kategori başarılı bir şekilde eklendi.",
+            buttons: true ,
+            icon: "success",
+            timer: 2000
+        }).then(function () {
+            window.location.reload(true);
+            tr.hide();
+        });
+    });
+</script>

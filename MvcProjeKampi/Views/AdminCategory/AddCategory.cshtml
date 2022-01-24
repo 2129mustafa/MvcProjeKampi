@@ -4,22 +4,71 @@
     ViewBag.Title = "AddCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<body>
 
-<h1>Yeni Kategori Ekleme Sayfası</h1>
-<br />
-@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
-{
-<div class="form-group">
-    @Html.Label("Kategori Adı")
-    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CategoryName)
-    <br /><br />
-    @Html.Label("Açıklamayı Yazınız")
-    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Description)
-    <br /><br />
-    <button class=" btn btn-outline-success">Kategori Ekle</button>
+    <h1>Yeni Kategori Ekleme Sayfası</h1>
+    <br />
 
-</div>
-}
+    <div class="form-group">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName)
+        <br /><br />
+        @Html.Label("Açıklamayı Yazınız")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+        <br /><br />
+        <button class="btn btn-outline-success" id="btn" type="button">Kategori Ekle</button>
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <script>
+            //$('#btn').click(function () {
+            //    swal({
+            //        title: "Tebrikler",
+            //        text: "Ekleme işlemi başarıyla gerçekleşti",
+            //        icon: "success",
+            //        timer: 8000
+            //    });
+            //});
+
+
+        $("#btn").click(function () {
+            $.ajax({
+                url: '@Url.Action("kategoriEkle", "AdminCategory")',
+                type: 'POST',
+                dataType: 'json',
+                data: { CategoryName: $("#CategoryName").val(), Description: $("#Description").val() },
+                success: function (d) {
+                    console.log(d.result);
+                    if (d.result) {
+                        swal({
+                            title: "Başarılı!",
+                            text: "Message!",
+                            icon: "success"
+                        }).then(function () {
+                            window.location = "/AdminCategory/Index";
+                        });
+                    }
+                    else {
+                        swal({
+                            title: "Hatalı!",
+                            text: "Message!",
+                            icon: "error"
+                        })
+                    }
+                },
+                error: function (hata) {
+
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
 

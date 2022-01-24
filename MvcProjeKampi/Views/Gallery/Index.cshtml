@@ -80,6 +80,8 @@
     <!-- Filterizr-->
     <script src="~/AdminLTE-3.0.4/plugins/filterizr/jquery.filterizr.min.js"></script>
     <!-- Page specific script -->
+
+
     <script>
         $(function () {
             $(document).on('click', '[data-toggle="lightbox"]', function (event) {
@@ -88,12 +90,12 @@
                     alwaysShowClose: true
                 });
             });
-
             $('.filter-container').filterizr({ gutterPixels: 3 });
             $('.btn[data-filter]').on('click', function () {
                 $('.btn[data-filter]').removeClass('active');
                 $(this).addClass('active');
             });
-        })</script>
+        });
+    </script>
 </body>
 </html>

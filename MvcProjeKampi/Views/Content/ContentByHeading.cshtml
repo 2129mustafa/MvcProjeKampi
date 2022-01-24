@@ -6,6 +6,10 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -21,23 +25,26 @@
                         <div class="timeline">
                             @foreach (var item in Model)
                             {
-                            <!-- timeline time label -->
-                            <div class="time-label">
-                                <span class="bg-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</span>
-                            </div>
-                            <!-- /.timeline-label -->
-                            <!-- timeline item -->
-                            <div>
-                                <i class="fas fa-comment bg-yellow"></i>
-                                <div class="timeline-item">
-                                    <h3 class="timeline-header"><a href="#">@item.Writer.WriterName @item.Writer.WriterSurname
-                                         </a></h3>
-                                    <div class="timeline-body">
-                                        @item.ContentValue
+                                <!-- timeline time label -->
+                                <div class="time-label">
+                                    <span class="bg-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas fa-comment bg-yellow"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header">
+                                            <a href="#">
+                                                @item.Writer.WriterName @item.Writer.WriterSurname
+                                            </a>
+                                        </h3>
+                                        <div class="timeline-body">
+                                            @item.ContentValue
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- END timeline item -->
+                                <!-- END timeline item -->
                             }
                         </div>
                     </div>
@@ -49,6 +56,24 @@
         <!-- /.content -->
     </div>
     <!-- ./wrapper -->
+    <button id="click">Click Me</button>
+
+
+    <script>
+        $('#click').click(function () {
+            swal({
+                title: "Tebrikler.",
+                text: "Kategori başarılı bir şekilde eklendi.",
+                buttons: true,
+                icon: "success",
+               
+            }).then(function () {
+                window.location.reload(true);
+                tr.hide();
+            });
+        });
+    </script>
+
 </body>
 </html>
 
